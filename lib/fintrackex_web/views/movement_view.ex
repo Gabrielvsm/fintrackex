@@ -16,7 +16,8 @@ defmodule FintrackexWeb.MovementView do
       title: movement.title,
       amount: movement.amount,
       origin: movement.origin,
-      type: movement.type
+      type: movement.type,
+      move_date: movement.move_date
     }
   end
 end
