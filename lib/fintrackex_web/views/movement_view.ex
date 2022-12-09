@@ -20,4 +20,8 @@ defmodule FintrackexWeb.MovementView do
       move_date: movement.move_date
     }
   end
+
+  def render("error.json", %{error: error}) do
+    %{ error: error }
+  end
 end

@@ -36,6 +36,8 @@ defmodule Fintrackex.Registry do
 
   """
   def get_movement!(id), do: Repo.get!(Movement, id)
+  
+  def get_movement(id), do: Repo.get(Movement, id)
 
   @doc """
   Creates a movement.

@@ -21,8 +21,10 @@ defmodule FintrackexWeb.MovementController do
   end
 
   def show(conn, %{"id" => id}) do
-    movement = Registry.get_movement!(id)
-    render(conn, "show.json", movement: movement)
+    case Registry.get_movement(id) do
+      nil -> render(conn, "error.json", error: "Movement not found!")
+      movement -> render(conn, "show.json", movement: movement)
+    end
   end
 
   def update(conn, %{"id" => id, "movement" => movement_params}) do

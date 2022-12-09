@@ -6,7 +6,7 @@ defmodule Fintrackex.Registry.Movement do
     field :amount, :float
     field :origin, :string
     field :title, :string
-    field :type, :string
+    field :type, Ecto.Enum, values: [:expense, :income]
     field :move_date, :date
 
     timestamps()
@@ -17,7 +17,6 @@ defmodule Fintrackex.Registry.Movement do
     movement
     |> cast(attrs, [:title, :amount, :origin, :type, :move_date])
     |> validate_required([:title, :amount, :type])
-    |> validate_inclusion(:type, ["expense", "income"], message: "ivalid! type must be 'expense' or 'income'")
     |> validate_number(:amount, greater_than: 0.0)
     |> check_move_date()
   end
